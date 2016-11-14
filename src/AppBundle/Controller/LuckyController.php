@@ -25,8 +25,9 @@ class LuckyController extends Controller
         }
         $numbersList = implode(', ', $numbers);
 
-        return new Response(
-            "<html><body><div class='symf-container'>{$numbersList}</div></body></html>"
+        return $this->render(
+            'lucky/number.html.twig',
+            ['luckyNumberList' => $numbersList]
         );
     }
 
