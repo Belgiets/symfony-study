@@ -41,4 +41,11 @@ class HelloController extends Controller
 
         return $this->render('@App/hello/hello.html.twig');
     }
+
+    public function contactAction($_locale)
+    {
+        return new Response(
+            "<html><body><p>Locale is {$_locale}!</p></body></html>"
+        );
+    }
 }

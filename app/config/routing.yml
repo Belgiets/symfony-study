@@ -1,3 +1,9 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+contact:
+    path: /{_locale}/contact
+    defaults: { _controller: AppBundle:Hello:contact }
+    requirements:
+        _locale: '%app.locales%'
