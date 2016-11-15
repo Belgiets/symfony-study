@@ -1,6 +1,7 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix: /site
 
 contact:
     path: /{_locale}/contact

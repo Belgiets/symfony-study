@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class HelloController extends Controller
 {
@@ -44,8 +45,19 @@ class HelloController extends Controller
 
     public function contactAction($_locale)
     {
+        $urlRel = $this->generateUrl('contact', ['_locale' => 'en']);
+        $urlAbs = $this->generateUrl(
+            'contact',
+            ['_locale' => 'en'],
+            UrlGeneratorInterface::ABSOLUTE_URL
+        );
+
+        $str = "<p>Locale is {$_locale}!</p>";
+        $str .= "<p>Relative url is {$urlRel}!</p>";
+        $str .= "<p>Relative url is {$urlAbs}!</p>";
+
         return new Response(
-            "<html><body><p>Locale is {$_locale}!</p></body></html>"
+            "<html><body>{$str}</body></html>"
         );
     }
 }
