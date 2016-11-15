@@ -6,4 +6,19 @@
             {{ flash_message }}
         </div>
     {% endfor %}
+    <div>
+        <h2>Global Template Variables</h2>
+
+        <h3>app.user</h3>
+        <p>{{ app.user }}</p>
+
+        <h3>app.request</h3>
+        <p>{{ app.request }}</p>
+
+        <h3>app.environment</h3>
+        <p>{{ app.environment }}</p>
+
+        <h3>app.debug</h3>
+        <p>{{ app.debug }}</p>
+    </div>
 {% endblock %}
