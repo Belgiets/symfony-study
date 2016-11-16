@@ -1,3 +1,8 @@
+dima_auto_test:
+    resource: "@DimaAutoTestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
