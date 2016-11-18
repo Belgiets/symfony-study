@@ -6,7 +6,7 @@ dima_auto_test:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-    prefix: /site
+    prefix:   /
 
 contact:
     path: /{_locale}/contact
