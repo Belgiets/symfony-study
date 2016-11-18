@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
@@ -26,16 +27,24 @@ class DefaultController extends Controller
      */
     public function createAction()
     {
+        $category = new Category();
+        $category->setName('Computer Peripherals');
         $product = new Product();
         $product->setName('Keyboard');
         $product->setPrice(19.99);
         $product->setDescription('Ergonomic and stylish!');
+
+        // relate this product to the category
+        $product->setCategory($category);
         $em = $this->getDoctrine()->getManager();
-        // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $em->persist($category);
         $em->persist($product);
-        // actually executes the queries (i.e. the INSERT query)
         $em->flush();
-        return new Response('Saved new product with id '.$product->getId());
+
+        return new Response(
+            'Saved new product with id: '.$product->getId()
+            .' and new category with id: '.$category->getId()
+        );
     }
 
     /**
